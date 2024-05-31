@@ -1,3 +1,6 @@
+# Archives
 *.tar.gz
-*.benchmark
+
+# BLOBs
 *.benchmark/
+namd/
