@@ -10,9 +10,12 @@ download_bench() {
         tar xvf $ARCHIVE
         mv $ORIGINAL $DIR
         rm -f $ARCHIVE
+
+	echo "done downloading and extracting $1"
 }
 
 for bench in dhfr apoa1 stmv
 do
-        download_bench $bench &
+#        download_bench $bench &
+	download_bench $bench
 done
