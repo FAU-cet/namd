@@ -4,6 +4,7 @@
 # BLOBs
 *.benchmark/
 namd/
+test/
 
 # sbatch job files
 *.o*
