@@ -1,21 +1,39 @@
 #! /bin/sh
 
+# benchmarks
+benchs="dhfr apoa1 stmv"
+
 download_bench() {
-        ORIGINAL="$1"_gpu
-        ARCHIVE=$ORIGINAL.tar.gz
-        DIR="$1".benchmark
+    ORIGINAL="$1"_gpu
+    ARCHIVE=$ORIGINAL.tar.gz
+    DIR="benchmarks/$1"
 
-        rm -rf $DIR
-        wget https://www.ks.uiuc.edu/Research/namd/benchmarks/systems/$ARCHIVE
-        tar xvf $ARCHIVE
-        mv $ORIGINAL $DIR
-        rm -f $ARCHIVE
+    wget https://www.ks.uiuc.edu/Research/namd/benchmarks/systems/$ARCHIVE
+    tar xvzf $ARCHIVE
+    rm -f $ARCHIVE
+    mv $ORIGINAL $DIR
 
-	echo "done downloading and extracting $1"
+    echo "[SCVL] done downloading and extracting $1"
+    touch benchmarks/$1.sync
 }
 
-for bench in dhfr apoa1 stmv
+find benchmarks/* ! -name '.gitkeep' -type d -exec rm -rf {} +
+
+# initiate downloads
+for bench in $benchs
 do
-#        download_bench $bench &
-	download_bench $bench
+    rm -f benchmarks/$bench.sync
+    download_bench $bench &
 done
+
+# wait for everything to download
+for sync in $benchs
+do
+    while [ ! -e benchmarks/$sync.sync ]
+    do
+        sleep 1
+    done
+    rm benchmarks/$sync.sync
+done
+
+echo "[SCVL] downloaded and extracted all archives!"

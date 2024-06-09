@@ -2,8 +2,9 @@
 *.tar.gz
 
 # BLOBs
-*.benchmark/
+benchmarks/
 namd/
+namd-bin/
 test/
 
 # sbatch job files
