@@ -11,29 +11,29 @@ download_namd() {
     wget "$url/$tarball"
     tar xvzf $tarball
     rm -f $tarball
-    mv $fullnamd namd-bin/$1
+    mv $fullnamd namd-bin/precompiled/$1
 
     echo "[SCVL] done downloading and extracting $namd"
-    touch namd-bin/$1.sync
+    touch namd-bin/precompiled/$1.sync
 }
 
-find namd-bin/* ! -name '.gitkeep' -type d -exec rm -rf {} +
+find namd-bin/precompiled/* ! -name '.gitkeep' -type d -exec rm -rf {} +
 
 # initiate downloads
 for namd in $bins
 do
-    rm -f namd-bin/$sync.sync
+    rm -f namd-bin/precompiled/$sync.sync
     download_namd $namd &
 done
 
 # wait for everything to download
 for sync in $bins
 do
-    while [ ! -e namd-bin/$sync.sync ]
+    while [ ! -e namd-bin/precompiled/$sync.sync ]
     do
         sleep 1
     done
-    rm namd-bin/$sync.sync
+    rm namd-bin/precompiled/$sync.sync
 done
 
 echo "[SCVL] downloaded and extracted all archives!"
