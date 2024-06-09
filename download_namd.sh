@@ -31,14 +31,3 @@ mv linux-x86_64 fftw
 mv tcl8.6.13-linux-x86_64 tcl
 mv tcl8.6.13-linux-x86_64-threaded tcl-threaded
 
-
-#module load cuda
-#./config Linux-x86_64-g++ --charm-arch multicore-linux-x86_64 --with-single-node-cuda --cuda-prefix $CUDA_HOME
-
-#mkdir bin
-
-#cd Linux-x86_64-g++
-
-#make
-
-#mv namd3 ../bin

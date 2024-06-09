@@ -22,5 +22,6 @@ module load cuda
 
 
 cd Linux-x86_64-g++
+mv namd3 ../../namd-bin/selfcompiled
 
 make
