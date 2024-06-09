@@ -1,9 +1,13 @@
 #! /bin/sh
 
 
-#download the latest binarys for namd from the repos
+#download the latest binarys for namd from the repos and exit if no access is available
 rm -rf namd
-git clone git@gitlab.com:tcbgUIUC/namd.git
+if [!git clone git@gitlab.com:tcbgUIUC/namd.git]; then
+	echo need ssh access to the namd repository
+	exit 1
+fi
+
 cd namd
 
 
