@@ -13,7 +13,7 @@ download_namd() {
     rm -f $tarball
     mv $fullnamd namd-bin/precompiled/$1
 
-    echo "[SCVL] done downloading and extracting $namd"
+    echo "[FAUcet] done downloading and extracting $namd"
     touch namd-bin/precompiled/$1.sync
 }
 
@@ -36,4 +36,4 @@ do
     rm namd-bin/precompiled/$sync.sync
 done
 
-echo "[SCVL] downloaded and extracted all archives!"
+echo "[FAUcet] downloaded and extracted all archives!"

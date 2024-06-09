@@ -13,7 +13,7 @@ download_bench() {
     rm -f $ARCHIVE
     mv $ORIGINAL $DIR
 
-    echo "[SCVL] done downloading and extracting $1"
+    echo "[FAUcet] done downloading and extracting $1"
     touch benchmarks/$1.sync
 }
 
@@ -36,4 +36,4 @@ do
     rm benchmarks/$sync.sync
 done
 
-echo "[SCVL] downloaded and extracted all archives!"
+echo "[FAUcet] downloaded and extracted all archives!"
