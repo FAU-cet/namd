@@ -5,7 +5,7 @@ scripts="download_benchmarks.sh download_binaries.sh download_namd.sh"
 run() {
     ./$1
 
-    echo "[SCVL] ran script $1"
+    echo "[FAUcet] ran script $1"
     touch $1.sync
 }
 
@@ -27,4 +27,4 @@ do
 done
 
 echo
-echo "[SCVL] かわいい猫! 🐱🐱🐱"
+echo "[蛇口] かわいい猫! 🐱🐱🐱"

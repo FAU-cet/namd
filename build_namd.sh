@@ -1,7 +1,7 @@
 #! /bin/bash -l
 
 if [ ! -e namd ]; then
-    echo "[SCVL] namd not found, attempting download"
+    echo "[FAUcet] namd not found, attempting download"
     . download_namd.sh
 fi
 

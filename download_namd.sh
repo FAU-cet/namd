@@ -5,7 +5,7 @@
 rm -rf namd
 git clone git@gitlab.com:tcbgUIUC/namd.git
 if [ ! -d namd ]; then
-	echo "[SCVL] need ssh access to the namd repository"
+	echo "[FAUcet] need ssh access to the namd repository"
 	exit 1
 fi
 
