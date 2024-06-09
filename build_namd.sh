@@ -1,5 +1,10 @@
 #! /bin/bash -l
 
+if [ ! -e namd ]; then
+    echo "[SCVL] namd not found, attempting download"
+    . download_namd.sh
+fi
+
 module unload cuda
 cd namd
 echo $CUDA_HOME

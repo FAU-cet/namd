@@ -6,14 +6,16 @@ To download all up-to-date binaries: `./download_binaries`
 
 To download source-code from gitlab (needs granted access, alongside SSH-key): `./download_namd`
 
+For compiling: `./build_namd`
+
 ## Folder Structure
 
-| Folder     | Purpose                                                      |
-|------------|--------------------------------------------------------------|
-| benchmarks | Houses benchmark datasets, each in their own subdirectory    |
-| namd-bin   | Where official NAMD binaries are put, also in subdirectories |
-| namd       | Git source code for NAMD                                     |
-| outputs    | Output job-files                                             |
+| Folder     | Purpose                                                   |
+|------------|-----------------------------------------------------------|
+| benchmarks | Houses benchmark datasets, each in their own subdirectory |
+| namd-bin   | Where NAMD binaries are put                               |
+| namd       | Git source code for NAMD                                  |
+| outputs    | Output job-files                                          |
 
 ## TODOs
 
