@@ -14,7 +14,6 @@ download_namd() {
     mv $fullnamd namd-bin/precompiled/$1
 
     echo "[FAUcet] done downloading and extracting $namd"
-    touch namd-bin/precompiled/$1.sync
 }
 
 find namd-bin/precompiled/* ! -name '.gitkeep' -type d -exec rm -rf {} +
@@ -26,14 +25,5 @@ do
     download_namd $namd &
 done
 
-# wait for everything to download
-for sync in $bins
-do
-    while [ ! -e namd-bin/precompiled/$sync.sync ]
-    do
-        sleep 1
-    done
-    rm namd-bin/precompiled/$sync.sync
-done
-
+wait
 echo "[FAUcet] downloaded and extracted all archives!"

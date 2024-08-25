@@ -6,7 +6,6 @@ run() {
     ./$1
 
     echo "[FAUcet] ran script $1"
-    touch $1.sync
 }
 
 # launch rockets
@@ -17,14 +16,6 @@ do
 done
 
 # wait for impact
-for sync in $scripts
-do
-    while [ ! -e $sync.sync ]
-    do
-        sleep 1
-    done
-    rm $sync.sync
-done
-
+wait
 echo
 echo "[蛇口🚰] かわいい猫 UwU! 🐱🐱🐱"

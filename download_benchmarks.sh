@@ -14,7 +14,6 @@ download_bench() {
     mv $ORIGINAL $DIR
 
     echo "[FAUcet] done downloading and extracting $1"
-    touch benchmarks/$1.sync
 }
 
 find benchmarks/* ! -name '.gitkeep' -type d -exec rm -rf {} +
@@ -26,14 +25,5 @@ do
     download_bench $bench &
 done
 
-# wait for everything to download
-for sync in $benchs
-do
-    while [ ! -e benchmarks/$sync.sync ]
-    do
-        sleep 1
-    done
-    rm benchmarks/$sync.sync
-done
-
+wait
 echo "[FAUcet] downloaded and extracted all archives!"
