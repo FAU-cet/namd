@@ -6,6 +6,10 @@ benchmarks/
 namd/
 namd-bin/
 test/
+namd3
+
+# git source for optimized version
+namd-src/
 
 # sbatch job files
 *.o*
