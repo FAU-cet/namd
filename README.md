@@ -1,12 +1,12 @@
 # NAMD Application for SC24
 
-To download benchmarks: `./download_benchmarks`
+To download benchmarks: `./download_benchmarks.sh`
 
-To download all up-to-date binaries: `./download_binaries`
+To download all up-to-date binaries: `./download_binaries.sh`
 
-To download source-code from gitlab (needs granted access, alongside SSH-key): `./download_namd`
+To download major-release source-code: `./download_src.sh`
 
-For compiling: `./build_namd`
+For compiling: `./build.sh`
 
 ## Folder Structure
 
@@ -14,7 +14,7 @@ For compiling: `./build_namd`
 |------------|-----------------------------------------------------------|
 | benchmarks | Houses benchmark datasets, each in their own subdirectory |
 | namd-bin   | Where NAMD binaries are put                               |
-| namd       | Git source code for NAMD                                  |
+| namd-src   | Source code for NAMD                                      |
 | outputs    | Output job-files                                          |
 
 ## TODOs
