@@ -1,7 +1,7 @@
 #! /bin/bash
 
-rm -rf namd
-echo "[FAUcet] cleaned namd folder"
+rm -rf namd-src
+echo "[FAUcet] cleaned namd-src"
 
 for folder in benchmarks namd-bin/precompiled
 do

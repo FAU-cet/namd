@@ -1,6 +1,6 @@
 #! /bin/bash
 
-scripts="download_benchmarks.sh download_binaries.sh download_namd.sh"
+scripts="download_benchmarks.sh download_binaries.sh download_src.sh"
 
 run() {
     ./$1
