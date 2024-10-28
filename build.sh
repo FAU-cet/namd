@@ -9,6 +9,7 @@ CLANGFLAGS="-O3 -march=native -mtune=native -m64 -Wl,-z,max-page-size=0x1000 -fa
 
 ## compiler flags for icx namd ##
 ICXFLAGS="-O3 -fp-model fast -xHost -unroll -vec-threshold1" # -ipo causes linking errors, vec-threshold tunable between 0-100
+# ICXFLAGS="-O3 -fp-model fast -unroll" # old compilers
 
 ## gpu acceleration ##
 # WITHGPU="--with-cuda" # gpuoff NVIDIA
