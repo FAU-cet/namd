@@ -16,9 +16,6 @@ WITHGPU="--with-single-node-cuda" # gpures NVIDIA
 # WITHGPU="--with-hip" # gpuoff AMD
 # WITHGPU="--with-single-node-hip" # gpures AMD
 
-## fftw3 compiler ##
-FFTWCC=icx
-
 #################
 
 # g++ seems to perform better than the icx version on cpu, latter gives warning about not being able to vectorize certain loops
@@ -75,13 +72,15 @@ echo build namd
 # hotfix for `register` modifier, deprecated for c++11 with icx
 find src/ -type f | xargs sed -i -e 's/\tregister /\t/g' -e 's/ register / /g' -e 's/(register /(/g'
 
+# AVX2 #
+
 # standard AVX2 clang build
 rm -rf Linux-x86_64-clang++/
 ./config Linux-x86_64-g++ --arch-suffix FAUcet --charm-arch multicore-linux-x86_64 --with-fftw3 --fftw-prefix `pwd`/fftw3-clang --tcl-prefix `pwd`/tcl-threaded --cxx clang++ --cc clang --cxx-opts "$CLANGFLAGS" --cc-opts "$CLANGFLAGS" $WITHGPU
 mv Linux-x86_64-g++ Linux-x86_64-clang++
 cd Linux-x86_64-clang++/
 make -j32
-cp namd3 ../../namd-bin/selfcompiled/namd3-clang-avx2-cuda
+cp namd3 ../../namd-bin/selfcompiled/namd3-clang-avx2
 cd ..
 
 # standard AVX2 g++ build
@@ -89,7 +88,7 @@ rm -rf Linux-x86_64-g++/
 ./config Linux-x86_64-g++ --arch-suffix FAUcet --charm-arch multicore-linux-x86_64 --with-fftw3 --fftw-prefix `pwd`/fftw3-gcc --tcl-prefix `pwd`/tcl-threaded $WITHGPU
 cd Linux-x86_64-g++/
 make -j32
-cp namd3 ../../namd-bin/selfcompiled/namd3-gcc-avx2-cuda
+cp namd3 ../../namd-bin/selfcompiled/namd3-gcc-avx2
 cd ..
 
 # icx AVX2
@@ -98,4 +97,31 @@ rm -rf Linux-x86_64-icx
 cd Linux-x86_64-icx
 make -j32
 cp namd3 ../../namd-bin/selfcompiled/namd3-icx-avx2
+cd ..
+
+# AVX512 #
+
+# AVX512 clang
+rm -rf Linux-AVX512-clang++/
+./config Linux-AVX512-g++ --arch-suffix FAUcet --charm-arch multicore-linux-x86_64 --with-fftw3 --fftw-prefix `pwd`/fftw3-clang-avx512 --tcl-prefix `pwd`/tcl-threaded --cxx clang++ --cc clang --cxx-opts "$CLANGFLAGS" --cc-opts "$CLANGFLAGS" $WITHGPU
+mv Linux-AVX512-g++ Linux-AVX512-clang++
+cd Linux-AVX512-clang++/
+make -j32
+cp namd3 ../../namd-bin/selfcompiled/namd3-clang-avx512
+cd ..
+
+# AVX512 g++ build
+rm -rf Linux-AVX512-g++/
+./config Linux-AVX512-g++ --arch-suffix FAUcet --charm-arch multicore-linux-x86_64 --with-fftw3 --fftw-prefix `pwd`/fftw3-gcc-avx512 --tcl-prefix `pwd`/tcl-threaded $WITHGPU
+cd Linux-AVX512-g++/
+make -j32
+cp namd3 ../../namd-bin/selfcompiled/namd3-gcc-avx512
+cd ..
+
+# icx AVX512
+rm -rf Linux-AVX512-icx
+./config Linux-AVX512-icx --arch-suffix FAUcet --charm-arch multicore-linux-x86_64-icx --with-fftw3 --fftw-prefix `pwd`/fftw3-icx-avx512 --tcl-prefix `pwd`/tcl-threaded --cxx icx --cc icx --cxx-opts "$ICXFLAGS" --cc-opts "$ICXFLAGS" $WITHGPU
+cd Linux-AVX512-icx
+make -j32
+cp namd3 ../../namd-bin/selfcompiled/namd3-icx-avx512
 cd ..
