@@ -58,7 +58,7 @@ do
     make -j32
     make install
     cp -r FAUcet-$compiler/include ../fftw3-$compiler
-    cp -r FAUcet/lib ../fftw3-$compiler
+    cp -r FAUcet-$compiler/lib ../fftw3-$compiler
     # AVX512
     ./configure --prefix $(pwd)/FAUcet-$compiler-avx512 --enable-single --enable-avx2 --enable-avx512 --enable-fma CC=$compiler
     make -j32
